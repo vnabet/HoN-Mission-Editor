@@ -1,0 +1,24 @@
+{
+  "name": "HoN Mission Editor",
+  "version": "0.0.0",
+  "authors": [
+    "vnabet <vnabet@gmail.com>"
+  ],
+  "description": "Heroes of Normandie Mission Editor",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.18",
+    "phaser": "~2.0.4",
+    "bootstrap": "~3.1.1",
+    "fontawesome": "~4.1.0"
+  }
+}

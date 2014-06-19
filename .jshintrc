@@ -1,0 +1,9 @@
+{
+  /*** Globals ***/
+  // To ignore any custom global variables, enable the `predef` option and list
+  // your variables within it.
+  "predef": [
+	  "angular",
+    "$"
+  ]
+}

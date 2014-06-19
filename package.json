@@ -1,0 +1,14 @@
+{
+  "name": "HoN-Mission-Editor",
+  "version": "0.0.0",
+  "description": "Heroes of Normandie Mission Editor",
+  "main": "index.html",
+  "scripts": {
+    "test": ""
+  },
+  "author": "Vincent Nabet",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.1"
+  }
+}

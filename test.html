@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>hello phaser!</title>
+        <script src="phaser.min.js"></script>
+        <style>
+        body, html {
+          padding: 0;
+          margin: 0;
+        }
+      </style>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+          
+      function getSize() {
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight,
+        }
+      }
+      
+      var size = getSize();
+      var game = new Phaser.Game(size.width,size.height,Phaser.CANVAS, '', {preload: preload, create: create}, true);
+      
+      window.addEventListener('resize', function(event) {
+        //console.log(event);
+        resize(getSize());
+        
+      });
+      
+      function preload() {
+        game.load.image('test', 'assets/images/core-box/tiles/C01-A.jpg');
+      }
+
+      function create() {
+        var image = game.add.sprite(game.world.centerX,game.world.centerY,'test');
+        //image.anchor = {x: 0.5, y: 0.5};
+        image.anchor.set(0.5);
+        image.inputEnabled = true;
+    image.input.enableDrag();
+
+      }
+      
+      function resize(size) {
+        game.width = size.width;
+        game.height = size.height;
+        game.canvas.width = size.width;
+        game.canvas.height = size.height;
+        game.world.setBounds(0, 0, size.width, size.height);
+        game.scale.width = size.width;
+        game.scale.height = size.height;
+        game.camera.setSize(size.width, size.height);
+        game.camera.setBoundsToWorld();
+        // resize debug offscreen canvas
+        if (game.debug.sprite) {
+            game.stage.removeChild(game.debug.sprite);
+            game.debug.sprite = null;
+            game.debug.textureFrame = null;
+            if (game.debug.texture) {
+                game.debug.texture.destroy();
+            }
+            game.debug.texture = null;
+            if (game.debug.baseTexture) {
+                game.debug.baseTexture.destroy();
+            }
+            game.debug.baseTexture = null;
+            game.debug.context = null;
+            game.debug.canvas = null;
+            game.debug.boot();
+        }
+
+        game.renderer.resize(size.width, size.height);
+
+        // Tell ScaleManager that we have changed sizes
+        game.scale.setSize();
+        
+      }
+
+     
+
+    };
+
+    </script>
+
+    </body>
+</html>
