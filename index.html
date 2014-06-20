@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles/app.css">
     
   </head>
-  <body ng-app="myApp">
+  <body ng-app="myApp" ng-controller="myController">
   
   <div id="header">
    <div class="row bar">
@@ -21,7 +21,8 @@
    </div>
    <div class="row bar">
      <div class="col-lg-12">
-     <button class="btn btn-default"><i class="fa fa-file"></i></button>
+       {{essai}}
+     <button class="btn btn-default"><i class="fa fa-file" ng-click="test()"></i></button>
      <button class="btn btn-default"><i class="fa fa-folder-open"></i></button>
      <div class="separator"></div>
      <button class="btn btn-default"><i class="fa fa-table"></i></button>
@@ -35,9 +36,8 @@
    </div>
     
   </div>
-   
+      
   <div class="row" id="phaser-container">
-
    </div>
    
    
@@ -46,6 +46,7 @@
    </div>
 
     <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="vendor/phaser/phaser.js"></script> 
     
     <script src="src/app.js"></script>
