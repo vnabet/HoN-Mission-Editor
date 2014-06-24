@@ -4,6 +4,7 @@
   // your variables within it.
   "predef": [
 	  "angular",
-    "$"
+    "$",
+    "window"
   ]
 }

@@ -7359,6 +7359,10 @@ body,
 html {
   width: 100%;
   height: 100%;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body {
   background-image: url("../assets/images/logos/logo_devil-pig.png");
@@ -7386,6 +7390,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=5);
 }
 .tools .tools-header {
+  cursor: move;
   line-height: 1.5em;
   background: #3b393c;
   padding: 5px;

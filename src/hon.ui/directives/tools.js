@@ -1,0 +1,45 @@
+(function () {
+  "use strict";
+  angular.module('hon.ui').directive('tools', [function () {
+    return {
+      restrict:'AE',
+      templateUrl: '/templates/tools.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        title: '@'
+      },
+      link: function (scope, elem) {
+        elem = elem[0];
+        var header = elem.querySelector('.tools-header');
+        var xOffset, yOffset;
+        
+        var mousedownHandler = function (event) {
+          window.document.addEventListener('mouseup', mouseupHandler);
+          window.document.addEventListener('mousemove', mousemoveHandler);
+          
+          xOffset = event.clientX - elem.offsetLeft;
+          yOffset = event.clientY - elem.offsetTop;
+
+        };
+        
+        var mouseupHandler = function () {
+          window.document.removeEventListener('mouseup', mouseupHandler);
+          window.document.removeEventListener('mousemove', mousemoveHandler);
+        };
+        
+        var mousemoveHandler = function (event) {
+          
+          elem.style.left = (event.clientX - xOffset) + 'px';
+          elem.style.top = (event.clientY - yOffset) + 'px';
+          
+        };
+
+        header.addEventListener('mousedown', mousedownHandler);
+
+      }
+      
+    };
+  
+  }]);
+}());
