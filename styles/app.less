@@ -1,12 +1,17 @@
 // main: main.less
+@hon-dark-gray:     @body-bg;
+@hon-gray:          lighten(@body-bg, 17%);
+@hon-light-gray:    lighten(@body-bg, 40%);
+
 
 .bar {
   padding: 5px 40px;
 
-  border-bottom: 1px solid #393939;
-  background: #545454;
-  border-bottom: 1px solid #302e31;
-  border-top: 1px solid #605e61
+  //border-bottom: 1px solid #393939;
+  //background: #545454;
+  background: @hon-gray;
+  border-bottom: 1px solid @hon-dark-gray;
+  border-top: 1px solid @hon-light-gray;
 }
 
 .separator {
@@ -47,8 +52,8 @@ body {
   min-height: 400px;
   top: 160px;
   left: 20px;
-  background: #545454;
-  border: 1px solid #302e31;
+  background: @hon-gray;
+  border: 1px solid @hon-gray;
   border-radius: @border-radius-base;
   
   -moz-box-shadow: 2px 2px 5px 0px #000000;
@@ -61,9 +66,9 @@ body {
   .tools-header {
     cursor: move;
     line-height: 1.5em;
-    background: #3b393c;
+    background: @hon-dark-gray;
     padding: 5px;
-    border: 1px solid #545454;
+    //border: 1px solid #545454;
     border-radius: @border-radius-base @border-radius-base 0 0;
     font-size: 0.75em
   }

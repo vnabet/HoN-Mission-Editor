@@ -26,7 +26,8 @@
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #292826;
+//@body-bg:               #292826;
+@body-bg:               #3F4030;
 //** Global text color on `<body>`.
 @text-color:            #fff;
 
@@ -96,9 +97,9 @@
 @line-height-large:         1.33;
 @line-height-small:         1.5;
 
-@border-radius-base:        4px;
-@border-radius-large:       6px;
-@border-radius-small:       3px;
+@border-radius-base:        3px;
+@border-radius-large:       4px;
+@border-radius-small:       2px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -139,8 +140,8 @@
 @btn-font-weight:                normal;
 
 @btn-default-color:              #fff;
-@btn-default-bg:                 #545454;
-@btn-default-border:             #545454;
+@btn-default-bg:                 lighten(@body-bg, 17%);
+@btn-default-border:             lighten(@body-bg, 17%);
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
