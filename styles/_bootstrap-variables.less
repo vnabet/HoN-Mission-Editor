@@ -14,10 +14,10 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #428bca;
-@brand-success:         #5cb85c;
+@brand-primary:         lighten(@body-bg, 17%);
+@brand-success:         #92bd6c;
 @brand-info:            #5bc0de;
-@brand-warning:         #f0ad4e;
+@brand-warning:         #d58015;
 @brand-danger:          #d9534f;
 
 
@@ -26,8 +26,8 @@
 // ## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-//@body-bg:               #292826;
-@body-bg:               #3F4030;
+@body-bg:               #292826;
+//@body-bg:               #3F4030;
 //** Global text color on `<body>`.
 @text-color:            #fff;
 
@@ -140,11 +140,11 @@
 @btn-font-weight:                normal;
 
 @btn-default-color:              #fff;
-@btn-default-bg:                 lighten(@body-bg, 17%);
-@btn-default-border:             lighten(@body-bg, 17%);
+@btn-default-bg:                 @brand-primary;
+@btn-default-border:             @brand-primary;
 
 @btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
+@btn-primary-bg:                 @body-bg;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
 @btn-success-color:              #fff;
@@ -568,7 +568,7 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             lighten(@body-bg, 17%);
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -579,9 +579,9 @@
 //** Modal backdrop opacity
 @modal-backdrop-opacity:      .5;
 //** Modal header border color
-@modal-header-border-color:   #e5e5e5;
+@modal-header-border-color:   @body-bg;
 //** Modal footer border color
-@modal-footer-border-color:   @modal-header-border-color;
+@modal-footer-border-color:   lighten(@body-bg, 40%);
 
 @modal-lg:                    900px;
 @modal-md:                    600px;

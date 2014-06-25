@@ -11,10 +11,17 @@
       },
       link: function (scope, elem) {
         elem = elem[0];
+                
         var header = elem.querySelector('.tools-header');
         var xOffset, yOffset;
-        
+
         var mousedownHandler = function (event) {
+          var tools = window.document.querySelectorAll('.tools');
+          for(var i = 0; i < tools.length; i++) {
+            tools[i].style.zIndex = 10;
+          } 
+          elem.style.zIndex = 99;
+          
           window.document.addEventListener('mouseup', mouseupHandler);
           window.document.addEventListener('mousemove', mousemoveHandler);
           

@@ -1,7 +1,17 @@
 // main: main.less
-@hon-dark-gray:     @body-bg;
-@hon-gray:          lighten(@body-bg, 17%);
-@hon-light-gray:    lighten(@body-bg, 40%);
+
+// Bootstrap overwriting
+.modal-body {
+  position: relative;
+  //background-color: @hon-dark-gray;
+  border-top: 1px solid @hon-light-gray;
+  border-bottom: 1px solid @hon-dark-gray;
+  //min-height: 100px;
+}
+
+.modal-footer {
+  margin-top: 0;
+}
 
 
 .bar {
@@ -48,10 +58,11 @@ body {
 
 .tools {
   position: absolute;
-  width: 200px;
+  width: 250px;
   min-height: 400px;
   top: 160px;
   left: 20px;
+  z-index: 10;
   background: @hon-gray;
   border: 1px solid @hon-gray;
   border-radius: @border-radius-base;
@@ -70,7 +81,8 @@ body {
     padding: 5px;
     //border: 1px solid #545454;
     border-radius: @border-radius-base @border-radius-base 0 0;
-    font-size: 0.75em
+    font-size: 0.75em;
+    border-bottom: 1px solid @hon-light-gray;
   }
   
 }
