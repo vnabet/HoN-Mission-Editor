@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+  </head>
+  <body ng-app="myApp">
+   
+    <div ng-controller="myController as ctl">
+      <div ui-view></div> <!-- contacts.html plugs in here -->
+      
+    </div>
+    
+    
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    
+    <script>
+      angular.module('myApp', ['ui.router'])
+      .controller('myController', function(){
+        this.test = 'toto';
+      })
+      .config(function($stateProvider, $urlRouterProvider) {
+        //
+        // For any unmatched url, redirect to /state1
+        $urlRouterProvider.otherwise("/home");
+        
+        //////////////////////////////////////////////
+        // Now set up the states
+        /*$stateProvider
+          .state('state1', {
+            url: "/state1",
+            templateUrl: "state1.html",
+            views: {
+              'v1': {
+                template:'TOTO'
+              }
+            }
+          })
+          .state('state1.list', {
+            url: "/list",
+            templateUrl: "state1.list.html",
+            controller: function($scope) {
+              $scope.items = ["A", "List", "Of", "Items"];
+            }
+          })
+          .state('state2', {
+            url: "/state2",
+            templateUrl: "state2.html"
+          })
+          .state('state2.list', {
+            url: "/list",
+              templateUrl: "state2.list.html",
+              controller: function($scope) {
+                $scope.things = ["A", "Set", "Of", "Things"];
+              }
+            })
+          });*/
+        
+        //////////////////////////////////////
+        /*$stateProvider.state('contacts', {
+          url: "/contacts",
+          views: {
+            '' : {
+              templateUrl: 'contacts.html',
+              controller: function($scope) {
+                $scope.essai = 'VINCENT';
+              }
+            },
+            'tools@contacts': {
+              template: 'Essai - {{essai}}'
+            },
+            'detail@contacts': {
+              template: 'TITI'
+            },
+          }   
+        })*/
+
+      
+      
+      ///////////////////////////////////////////
+      $stateProvider.state('home', 
+      {
+          url: "/home",
+          templateUrl: 'home.html',
+          controller: function($scope) {
+                $scope.essai = 'VINCENT';
+              }  
+      })
+      .state('home.list', {
+        url: "/list",
+        //template: 'TOTOTOTOTOTOTOTO'
+        views: {
+            'tools': {
+              templateUrl: 'home-tools.html'
+            },
+            'detail': {
+              templateUrl: 'home-detail.html'
+            },
+          } 
+      })
+      .state('home.list.profundis', {
+        url:"/profundis",
+        template: 'ROROROR'
+        /*views: {
+          '@tools@home': {
+            template: 'REMY'
+          }
+        }*/
+        
+      })
+      .state('home.list.bubu', {
+        url:"/bubu",
+        //template: 'bubu'
+        views: {
+          'a': {
+            template: 'REMY'
+          }
+        }
+        
+      });
+        
+      
+        
+        
+              });
+      
+      
+      
+      
+    </script>
+    
+  </body>
+</html>

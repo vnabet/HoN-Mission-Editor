@@ -67,22 +67,27 @@ body {
   border: 1px solid @hon-gray;
   border-radius: @border-radius-base;
   
-  -moz-box-shadow: 2px 2px 5px 0px #000000;
-  -webkit-box-shadow: 2px 2px 5px 0px #000000;
-  -o-box-shadow: 2px 2px 5px 0px #000000;
-  box-shadow: 2px 2px 5px 0px #000000;
-  filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=5);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  -o-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+  
+  
+  //filter:progid:DXImageTransform.Microsoft.Shadow(color=#000000, Direction=134, Strength=5);
   
   
   .tools-header {
     cursor: move;
     line-height: 1.5em;
-    background: @hon-dark-gray;
+    background: @hon-middle-gray;
     padding: 5px;
-    //border: 1px solid #545454;
     border-radius: @border-radius-base @border-radius-base 0 0;
     font-size: 0.75em;
-    border-bottom: 1px solid @hon-light-gray;
+    border-bottom: 1px solid @hon-dark-gray;
+  }
+  
+  .tools-content {
+    border-top: 1px solid @hon-light-gray;
   }
   
 }
