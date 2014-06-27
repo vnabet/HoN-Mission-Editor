@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Heroes of Normandie",
+    "path":"HoN",
+    "packages": [
+      {
+        "name": "HoN Base",
+        "path": "HoN-Base",
+        "tiles":
+         [
+            {
+              "name": "A",
+              "faces": [
+                { "name": "01"},
+                { "name": "02"}      
+              ]
+            },
+            {
+              "name": "B",
+              "faces": [
+                { "image": "01"},
+                { "image": "02"}      
+              ]
+            }
+          ] 
+      }
+    ]
+  }
+]

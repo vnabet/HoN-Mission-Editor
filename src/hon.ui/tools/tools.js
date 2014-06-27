@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  angular.module('hon.ui').directive('tools', [function () {
+  angular.module('hon.ui.tools', []).directive('tools', [function () {
     return {
       restrict:'AE',
       templateUrl: '/templates/tools.html',

@@ -1,0 +1,17 @@
+{
+  "idScenario": 10,
+  "idUser": 10,
+  "name": "Mon scénario",
+  "map": {
+    "size": {
+      "rows": 2,
+      "columns": 2
+    },
+    "tiles" : [
+      {"idTile": 1, "idFace": 1, "rotation": 3},
+      {"idTile": 2, "idFace": 3, "rotation": 2},
+      {"idTile": 3, "idFace": 6, "rotation": 0},
+      {"idTile": 4, "idFace": 7, "rotation": 3}
+    ]
+  }
+}

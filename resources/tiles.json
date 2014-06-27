@@ -1,0 +1,20 @@
+{
+  "idPackage": 1,
+  "tiles":
+ [
+    {
+      "idTile": 1,
+      "faces": [
+        { "idFace": 1, "image": "tile-01-01.jpg"},
+        { "idFace": 2, "image": "tile-01-02.jpg"}      
+      ]
+    },
+    {
+      "idTile": 2,
+      "faces": [
+        { "idFace": 3, "image": "tile-02-01.jpg"},
+        { "idFace": 4, "image": "tile-02-02.jpg"}      
+      ]
+    }
+  ] 
+}
