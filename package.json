@@ -9,6 +9,11 @@
   "author": "Vincent Nabet",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.8.1"
+    "gulp": "^3.8.1",
+    "progress": "^1.1.6"
+  },
+  "dependencies": {
+    "sqlite3": "^2.2.3",
+    "q": "^1.0.1"
   }
 }
