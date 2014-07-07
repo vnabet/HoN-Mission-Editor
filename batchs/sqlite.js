@@ -117,7 +117,215 @@
     });
     
     return deferred.promise;
+  })
+  //------------------------------------
+  //Insertion des jeux
+  //------------------------------------
+  .then(function () {
+    logger.info('Insertion des jeux...');
     
+    var bar = new ProgressBar(data.length);
+    
+    var deferred = Q.defer();
+    var promises = [];
+    
+    db.serialize(function() {
+      var request = db.prepare("INSERT INTO game (name, path) VALUES ($name, $path)");
+      
+      data.forEach(function(game) {
+        
+        var _deferred = Q.defer();
+        promises.push(_deferred.promise); 
+        
+        request.run( {$name: game.name, $path: game.path}, function (error) {
+          bar.tick();
+          if(!error) {
+            game.id = request.lastID;
+            _deferred.resolve();
+          } else {
+            _deferred.reject(error);
+          }
+        });
+      });
+      
+      request.finalize();
+    });
+    
+    Q.all(promises).then(function() {
+      deferred.resolve();
+    }, function(error) {
+      deferred.reject(error);
+    });
+    
+    return deferred.promise;
+  })
+  //------------------------------------
+  //Insertion des package
+  //------------------------------------  
+  .then(function () {
+    
+    logger.info('Insertion des packages...');
+    
+    var total = 0;
+    data.forEach(function (game) {
+      total += game.packages.length;
+    });
+    
+    var bar = new ProgressBar(total);
+    
+    var deferred = Q.defer();
+    var promises = [];
+    
+    db.serialize(function() {
+      var request = db.prepare("INSERT INTO package (gameid, name, path) VALUES ($gameid, $name, $path)");
+      
+      data.forEach(function(game) {
+        var gameid = game.id;
+        
+        game.packages.forEach(function (pack) {
+          var _deferred = Q.defer();
+          promises.push(_deferred.promise); 
+
+          request.run( {$gameid: gameid, $name: pack.name, $path: pack.path}, function (error) {
+            bar.tick();
+            if(!error) {
+              pack.id = request.lastID;
+              _deferred.resolve();
+            } else {
+              _deferred.reject(error);
+            }
+          }); 
+        });
+      });
+      
+      request.finalize();
+    });
+    
+    Q.all(promises).then(function() {
+      deferred.resolve();
+    }, function(error) {
+      deferred.reject(error);
+    });
+    
+    return deferred.promise;
+    
+  })
+  
+  //------------------------------------
+  //Insertion des tuiles
+  //------------------------------------  
+  .then(function () {
+    
+    logger.info('Insertion des tuiles...');
+    
+    var total = 0;
+    data.forEach(function (game) {
+      game.packages.forEach(function (pack) {
+        total += pack.tiles.length;
+      });
+    });
+    
+    var bar = new ProgressBar(total);
+    
+    var deferred = Q.defer();
+    var promises = [];
+    
+    db.serialize(function() {
+      var request = db.prepare("INSERT INTO tile (packageid, name) VALUES ($packageid, $name)");
+      
+      data.forEach(function(game) {
+        game.packages.forEach(function (pack) {
+          var packageid = pack.id;
+          
+          pack.tiles.forEach(function (tile) {
+            var _deferred = Q.defer();
+            promises.push(_deferred.promise); 
+
+            request.run( {$packageid: packageid, $name: tile.name}, function (error) {
+              bar.tick();
+              if(!error) {
+                tile.id = request.lastID;
+                _deferred.resolve();
+              } else {
+                _deferred.reject(error);
+              }
+            }); 
+          });          
+        });
+      });
+      
+      request.finalize();
+    });
+    
+    Q.all(promises).then(function() {
+      deferred.resolve();
+    }, function(error) {
+      deferred.reject(error);
+    }); 
+    return deferred.promise;
+  })
+  
+  
+  //------------------------------------
+  //Insertion des faces sur les tuiles
+  //------------------------------------  
+  .then(function () {
+    
+    logger.info('Insertion des faces sur les tuiles...');
+    
+    var total = 0;
+    data.forEach(function (game) {
+      game.packages.forEach(function (pack) {
+        pack.tiles.forEach(function(tile) {
+          total += tile.faces.length;
+        });
+      });
+    });
+    
+    var bar = new ProgressBar(total);
+    
+    var deferred = Q.defer();
+    var promises = [];
+    
+    db.serialize(function() {
+      var request = db.prepare("INSERT INTO tile_face (tileid, name) VALUES ($tileid, $name)");
+      
+      data.forEach(function(game) {
+        game.packages.forEach(function (pack) {
+          pack.tiles.forEach(function (tile) {
+            var tileid = tile.id;
+            
+            tile.faces.forEach(function (face) {
+              var _deferred = Q.defer();
+              promises.push(_deferred.promise); 
+              request.run( {$tileid: tileid, $name: face.name}, function (error) {
+                bar.tick();
+                if(!error) {
+                  face.id = request.lastID;
+                  _deferred.resolve();
+                } else {
+                  _deferred.reject(error);
+                }
+              }); 
+            }); 
+          });         
+        });
+      });
+      
+      request.finalize();
+    });
+    
+    Q.all(promises).then(function() {
+      deferred.resolve();
+    }, function(error) {
+      deferred.reject(error);
+    }); 
+    return deferred.promise;
+  })
+  
+  
+  .then(function () {
+    //console.log(data[0].packages[0].tiles);
   })
   //------------------------------------
   //Erreurs
@@ -136,7 +344,5 @@
       db.close();
     }
   });
-
-  
 }());
 
