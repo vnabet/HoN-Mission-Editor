@@ -4,22 +4,50 @@
     "path":"HoN",
     "packages": [
       {
-        "name": "HoN Base",
-        "path": "HoN-Base",
+        "name": "HoN Core Box",
+        "path": "core-box",
         "tiles":
          [
             {
-              "name": "A",
+              "name": "C01",
               "faces": [
-                { "name": "01"},
-                { "name": "02"}      
+                { "name": "A"},
+                { "name": "B"}      
               ]
             },
             {
-              "name": "B",
+              "name": "C02",
               "faces": [
-                { "name": "01"},
-                { "name": "02"}      
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "C03",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "C04",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "C05",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "C06",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
               ]
             }
           ] 
