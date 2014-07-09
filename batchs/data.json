@@ -51,6 +51,55 @@
               ]
             }
           ] 
+      },
+      {
+        "name": "HoN DDay",
+        "path": "d-day",
+        "tiles":
+         [
+            {
+              "name": "DD01",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "DD02",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "DD03",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "DD04",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "DD05",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            },
+            {
+              "name": "DD06",
+              "faces": [
+                { "name": "A"},
+                { "name": "B"}      
+              ]
+            }
+          ] 
       }
     ]
   }

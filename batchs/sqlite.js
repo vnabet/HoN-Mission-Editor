@@ -221,7 +221,9 @@
     var total = 0;
     data.forEach(function (game) {
       game.packages.forEach(function (pack) {
-        total += pack.tiles.length;
+        if(pack.tiles) {
+          total += pack.tiles.length;
+        }
       });
     });
     
@@ -237,20 +239,23 @@
         game.packages.forEach(function (pack) {
           var packageid = pack.id;
           
-          pack.tiles.forEach(function (tile) {
-            var _deferred = Q.defer();
-            promises.push(_deferred.promise); 
+          if(pack.tiles) {
+            pack.tiles.forEach(function (tile) {
+              var _deferred = Q.defer();
+              promises.push(_deferred.promise); 
 
-            request.run( {$packageid: packageid, $name: tile.name}, function (error) {
-              bar.tick();
-              if(!error) {
-                tile.id = request.lastID;
-                _deferred.resolve();
-              } else {
-                _deferred.reject(error);
-              }
-            }); 
-          });          
+              request.run( {$packageid: packageid, $name: tile.name}, function (error) {
+                bar.tick();
+                if(!error) {
+                  tile.id = request.lastID;
+                  _deferred.resolve();
+                } else {
+                  _deferred.reject(error);
+                }
+              }); 
+            });          
+          }
+                  
         });
       });
       
@@ -276,9 +281,13 @@
     var total = 0;
     data.forEach(function (game) {
       game.packages.forEach(function (pack) {
-        pack.tiles.forEach(function(tile) {
-          total += tile.faces.length;
-        });
+        if(pack.tiles) {
+          pack.tiles.forEach(function(tile) {
+            if(tile.faces) {
+              total += tile.faces.length;
+            } 
+          });
+        }
       });
     });
     
@@ -292,23 +301,30 @@
       
       data.forEach(function(game) {
         game.packages.forEach(function (pack) {
-          pack.tiles.forEach(function (tile) {
-            var tileid = tile.id;
+          
+          if(pack.tiles) {
+            pack.tiles.forEach(function (tile) {
+              var tileid = tile.id;
+
+              if(tile.faces) {
+                tile.faces.forEach(function (face) {
+                  var _deferred = Q.defer();
+                  promises.push(_deferred.promise); 
+                  request.run( {$tileid: tileid, $name: face.name}, function (error) {
+                    bar.tick();
+                    if(!error) {
+                      face.id = request.lastID;
+                      _deferred.resolve();
+                    } else {
+                      _deferred.reject(error);
+                    }
+                  }); 
+                });
+              }
+
+            });
             
-            tile.faces.forEach(function (face) {
-              var _deferred = Q.defer();
-              promises.push(_deferred.promise); 
-              request.run( {$tileid: tileid, $name: face.name}, function (error) {
-                bar.tick();
-                if(!error) {
-                  face.id = request.lastID;
-                  _deferred.resolve();
-                } else {
-                  _deferred.reject(error);
-                }
-              }); 
-            }); 
-          });         
+          }         
         });
       });
       
